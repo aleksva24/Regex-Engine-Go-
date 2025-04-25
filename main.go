@@ -140,33 +140,6 @@ func (al AnyLiteral) Match(s string, ind int) int {
 	return ind + 1
 }
 
-func (re Regexp) matchStart(s string) (bool, error) {
-	switch re.matchers[0].(type) {
-	case StartsWith:
-		if (re.matchers[0].Match(s, 0)) != -1 {
-			return true, nil
-		}
-	default:
-		return false, errors.New("No start marker")
-	}
-
-	return false, nil
-}
-
-func (re Regexp) matchEnd(s string) (bool, error) {
-	lastInd := len(re.matchers) - 1
-	switch re.matchers[lastInd].(type) {
-	case EndsWith:
-		if (re.matchers[lastInd].Match(s, len(s)-1)) != -1 {
-			return true, nil
-		}
-	default:
-		return false, errors.New("No end marker")
-	}
-
-	return false, nil
-}
-
 func (re Regexp) Match(s string) bool {
 	if re.matchers == nil {
 		return true
