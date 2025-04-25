@@ -171,15 +171,7 @@ func (re Regexp) Match(s string) bool {
 	if re.matchers == nil {
 		return true
 	}
-	/*
-		if startMatched, err := re.matchStart(s); startMatched == false && err == nil {
-			return false
-		}
 
-		if endMatched, err := re.matchEnd(s); endMatched == false && err == nil {
-			return false
-		}
-	*/
 	i := 0
 
 	for i < len(s) {
